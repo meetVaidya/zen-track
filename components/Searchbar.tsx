@@ -12,7 +12,7 @@ const Searchbar = () => {
                 placeholder="Enter product link..."
                 className="searchbar-input"
             />
-            <button type='submit' className='searchbar-btn'></button>
+            <button type='submit' className='searchbar-btn'>Search</button>
         </form>
     );
 };
