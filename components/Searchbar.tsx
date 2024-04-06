@@ -1,5 +1,6 @@
 'use client';
 
+import { scrapeAndStoreFunction } from '@/lib/actions';
 import { url } from 'inspector';
 import React, { FormEvent } from 'react';
 import { useState } from 'react';
@@ -27,7 +28,7 @@ const Searchbar = () => {
     const [searchPrompt, setSearchPrompt] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(searchPrompt);
 
@@ -41,6 +42,7 @@ const Searchbar = () => {
             setIsLoading(true);
 
             //scrape the product page
+            const product = await scrapeAndStoreFunction(searchPrompt);
         } catch (error) {
             console.log(error);
         } finally {
